@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoloTasker - Level Up Your Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4">
+
+    <main class="w-full max-w-4xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-blue-500/20 shadow-2xl shadow-blue-500/10 flex flex-col md:flex-row overflow-hidden" style="min-height: 85vh;">
+        
+        <!-- Left Panel: Hunter Status -->
+        <div class="w-full md:w-1/3 bg-gradient-to-b from-gray-900 to-black p-6 md:p-8 flex flex-col items-center justify-center border-r border-blue-500/20">
+            <h2 class="text-2xl font-bold mb-4 text-center font-orbitron text-glow">Hunter Status</h2>
+            <p class="text-blue-300 text-center mb-8">Arise and level up.</p>
+            
+            <div class="relative w-48 h-48">
+                <svg class="w-full h-full" viewBox="0 0 120 120">
+                    <!-- Background Circle -->
+                    <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(0, 170, 255, 0.2)" stroke-width="12" />
+                    <!-- Progress Circle -->
+                    <circle id="progress-circle" class="progress-ring__circle" cx="60" cy="60" r="54" fill="none" stroke="#00aaff" stroke-width="12" stroke-linecap="round" />
+                </svg>
+                <div id="progress-text" class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center">
+                    <span class="text-4xl font-bold font-orbitron">0%</span>
+                    <span class="text-sm text-blue-300">EXP</span>
+                </div>
+            </div>
+
+            <div id="stats-container" class="text-center mt-8 w-full">
+                <div class="flex justify-around">
+                    <div>
+                        <p class="text-3xl font-bold font-orbitron text-glow" id="completed-count">0</p>
+                        <p class="text-blue-300">Cleared</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold font-orbitron text-glow" id="pending-count">0</p>
+                        <p class="text-blue-300">Pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Quest Log -->
+        <div class="w-full md:w-2/3 p-6 md:p-8 flex flex-col">
+            <h1 class="text-3xl font-bold mb-1 font-orbitron text-glow">[ Quest Log ]</h1>
+            <p class="text-blue-300 mb-6" id="date-display"></p>
+
+            <!-- Add Quest Form -->
+            <form id="add-task-form" class="flex flex-col sm:flex-row gap-2 mb-6">
+                <input type="text" id="task-input" class="flex-grow p-3 bg-gray-900 border-2 border-blue-500/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition" placeholder="Enter a new quest..." required>
+                <select id="priority-input" class="p-3 bg-gray-900 border-2 border-blue-500/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                    <option value="e-rank">E-Rank</option>
+                    <option value="d-rank">D-Rank</option>
+                    <option value="c-rank" selected>C-Rank</option>
+                    <option value="b-rank">B-Rank</option>
+                    <option value="a-rank">A-Rank</option>
+                    <option value="s-rank">S-Rank</option>
+                </select>
+                <button type="submit" class="bg-blue-600 text-white font-bold p-3 rounded-lg hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center font-orbitron">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                    <span class="ml-2 sm:hidden">Accept</span>
+                </button>
+            </form>
+            
+            <!-- Quest List -->
+            <div class="flex-grow overflow-y-auto task-list pr-2 -mr-2">
+                <ul id="task-list-ul">
+                    <!-- Quest items will be injected here -->
+                </ul>
+                <div id="empty-state" class="hidden flex-col items-center justify-center text-center text-gray-500 p-8">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                     <p class="font-medium font-orbitron">Quest Log is Empty</p>
+                     <p class="text-sm">Accept a new quest to begin.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
